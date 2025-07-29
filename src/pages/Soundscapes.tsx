@@ -50,6 +50,13 @@ const Soundscapes = () => {
       description: "Sacred singing bowl meditation",
       duration: "35 min",
       category: "Instrumental"
+    },
+    {
+      id: "flute",
+      name: "Bamboo Flute",
+      description: "Soothing bamboo flute melodies",
+      duration: "50 min",
+      category: "Instrumental"
     }
   ];
 
