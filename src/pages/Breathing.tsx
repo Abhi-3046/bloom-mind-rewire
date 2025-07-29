@@ -12,6 +12,7 @@ const Breathing = () => {
     { name: "Box Breathing", description: "4-4-4-4 pattern", duration: "Focus" },
     { name: "Triangle", description: "Inhale 4, Hold 4, Exhale 4", duration: "Balance" },
     { name: "Quick Reset", description: "2-2-4 pattern", duration: "Energy" },
+    { name: "Wim Hof", description: "30 breaths + holds (3 rounds)", duration: "Advanced" },
   ];
 
   return (
