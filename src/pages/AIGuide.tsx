@@ -59,7 +59,10 @@ const AIGuide = () => {
                 <strong>AI:</strong> I recommend a 10-minute stress relief session. Would you like me to guide you?
               </div>
             </div>
-            <Button className="w-full bg-meditation-primary hover:bg-meditation-primary/90">
+            <Button 
+              className="w-full bg-meditation-primary hover:bg-meditation-primary/90"
+              onClick={() => window.open('https://app.agentx.so/shared-chat/?agent=6867671d8619760d29937401', '_blank')}
+            >
               Start Conversation
             </Button>
           </CardContent>
