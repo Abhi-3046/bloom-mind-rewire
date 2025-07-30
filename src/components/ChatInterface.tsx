@@ -48,43 +48,52 @@ const ChatInterface = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const messageText = inputValue;
     setInputValue("");
     setIsLoading(true);
 
-    // Simulate AI response (replace with actual AI service later)
-    setTimeout(() => {
+    try {
+      // Call AgentX API
+      const response = await fetch('https://app.agentx.so/api/shared-chat/6867671d8619760d29937401/message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: messageText,
+          conversationId: Date.now().toString() // Simple conversation ID
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response from AI');
+      }
+
+      const data = await response.json();
+      
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: generateAIResponse(inputValue),
+        text: data.response || "I'm here to help with your meditation practice. How can I assist you today?",
         isBot: true,
         timestamp: new Date(),
       };
+      
       setMessages(prev => [...prev, botMessage]);
+    } catch (error) {
+      console.error('Error calling AgentX API:', error);
+      
+      // Fallback response
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "I'm experiencing some technical difficulties. Please try again in a moment. In the meantime, I'd be happy to help with meditation techniques or breathing exercises.",
+        isBot: true,
+        timestamp: new Date(),
+      };
+      
+      setMessages(prev => [...prev, botMessage]);
+    } finally {
       setIsLoading(false);
-    }, 1000);
-  };
-
-  const generateAIResponse = (userMessage: string) => {
-    // Simple response logic - replace with actual AI integration
-    const lowerMessage = userMessage.toLowerCase();
-    
-    if (lowerMessage.includes("stress") || lowerMessage.includes("anxious")) {
-      return "I understand you're feeling stressed. Try a 5-minute breathing exercise: breathe in for 4 counts, hold for 4, and exhale for 6. This activates your parasympathetic nervous system.";
     }
-    
-    if (lowerMessage.includes("sleep") || lowerMessage.includes("insomnia")) {
-      return "For better sleep, try our evening wind-down meditation. Practice progressive muscle relaxation starting from your toes and working up to your head.";
-    }
-    
-    if (lowerMessage.includes("focus") || lowerMessage.includes("concentrate")) {
-      return "To improve focus, try mindfulness meditation. Start with 10 minutes daily, focusing on your breath. When your mind wanders, gently bring attention back to breathing.";
-    }
-    
-    if (lowerMessage.includes("meditation") || lowerMessage.includes("meditate")) {
-      return "Great choice! Start with 5-10 minutes daily. Find a quiet space, sit comfortably, and focus on your breath. Consistency is more important than duration.";
-    }
-    
-    return "Thank you for sharing. Based on your meditation patterns, I recommend starting with mindful breathing. Would you like me to guide you through a quick session?";
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
