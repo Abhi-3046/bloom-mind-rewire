@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Brain, MessageCircle, Sparkles } from "lucide-react";
+import ChatInterface from "@/components/ChatInterface";
 
 const AIGuide = () => {
   return (
@@ -47,25 +48,7 @@ const AIGuide = () => {
               Chat with AI
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="h-48 bg-muted/20 rounded-lg p-4 space-y-3">
-              <div className="bg-meditation-primary/10 p-2 rounded-lg text-sm">
-                <strong>AI:</strong> How are you feeling today?
-              </div>
-              <div className="bg-background p-2 rounded-lg text-sm ml-8">
-                <strong>You:</strong> A bit stressed from work
-              </div>
-              <div className="bg-meditation-primary/10 p-2 rounded-lg text-sm">
-                <strong>AI:</strong> I recommend a 10-minute stress relief session. Would you like me to guide you?
-              </div>
-            </div>
-            <Button 
-              className="w-full bg-meditation-primary hover:bg-meditation-primary/90"
-              onClick={() => window.open('https://app.agentx.so/shared-chat/?agent=6867671d8619760d29937401', '_blank')}
-            >
-              Start Conversation
-            </Button>
-          </CardContent>
+          <ChatInterface />
         </Card>
       </div>
 
