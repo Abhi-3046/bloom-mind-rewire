@@ -1,4 +1,4 @@
-import { BarChart3, Brain, Play, Wind, Headphones, Podcast, Calendar } from "lucide-react";
+import { BarChart3, Brain, Play, Wind, Headphones, Podcast, Calendar, User } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   Sidebar,
@@ -14,13 +14,14 @@ import {
 } from "@/components/ui/sidebar";
 
 const navigationItems = [
-  { title: "Stats", url: "/stats", icon: BarChart3 },
-  { title: "AI Guide", url: "/ai-guide", icon: Brain },
   { title: "Guided Sessions", url: "/", icon: Play },
+  { title: "Profile", url: "/profile", icon: User },
+  { title: "AI Guide", url: "/ai-guide", icon: Brain },
   { title: "Breathing", url: "/breathing", icon: Wind },
   { title: "Soundscapes", url: "/soundscapes", icon: Headphones },
   { title: "Podcasts", url: "/podcasts", icon: Podcast },
   { title: "Schedule", url: "/schedule", icon: Calendar },
+  { title: "Stats", url: "/stats", icon: BarChart3 },
 ];
 
 export function AppSidebar() {

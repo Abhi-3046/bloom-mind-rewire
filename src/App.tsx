@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppLayout } from "@/components/AppLayout";
 import Index from "./pages/Index";
 import Stats from "./pages/Stats";
+import Profile from "./pages/Profile";
 import AIGuide from "./pages/AIGuide";
 import Breathing from "./pages/Breathing";
 import Soundscapes from "./pages/Soundscapes";
@@ -24,6 +25,7 @@ const App = () => (
         <AppLayout>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="/ai-guide" element={<AIGuide />} />
             <Route path="/breathing" element={<Breathing />} />
