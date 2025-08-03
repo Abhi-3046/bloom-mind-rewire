@@ -140,13 +140,15 @@ const Index = () => {
 
             {/* Controls */}
             <div className="animate-fade-in">
-              <MeditationControls
-                onStart={handleStart}
-                onPause={handlePause}
-                onStop={handleStop}
-                isPlaying={isPlaying}
-                duration={timeLeft}
-              />
+            <MeditationControls
+              onStart={handleStart}
+              onPause={handlePause}
+              onStop={handleStop}
+              isPlaying={isPlaying}
+              duration={timeLeft}
+              timeLeft={timeLeft}
+              totalDuration={duration}
+            />
             </div>
           </div>
         )}

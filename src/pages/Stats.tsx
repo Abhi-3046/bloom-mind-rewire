@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart3, Clock, Target, TrendingUp } from "lucide-react";
+import RewardSystem from "@/components/RewardSystem";
 
 const Stats = () => {
   return (
@@ -54,6 +55,8 @@ const Stats = () => {
           </CardContent>
         </Card>
       </div>
+
+      <RewardSystem />
 
       <Card className="border-meditation-primary/20">
         <CardHeader>

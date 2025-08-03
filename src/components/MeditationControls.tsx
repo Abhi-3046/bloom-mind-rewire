@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Play, Pause, Square } from 'lucide-react';
+import { useRewardSystem } from "@/hooks/useRewardSystem";
 
 interface MeditationControlsProps {
   onStart: () => void;
@@ -8,13 +9,25 @@ interface MeditationControlsProps {
   onStop: () => void;
   isPlaying: boolean;
   duration: number;
+  timeLeft: number;
+  totalDuration: number;
 }
 
-const MeditationControls = ({ onStart, onPause, onStop, isPlaying, duration }: MeditationControlsProps) => {
+const MeditationControls = ({ onStart, onPause, onStop, isPlaying, duration, timeLeft, totalDuration }: MeditationControlsProps) => {
+  const { addMeditationXP } = useRewardSystem();
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const handleStop = () => {
+    // Award XP if session was completed (timeLeft is 0) or mostly completed (>80%)
+    const completionPercentage = ((totalDuration - timeLeft) / totalDuration) * 100;
+    if (timeLeft === 0 || completionPercentage >= 80) {
+      addMeditationXP();
+    }
+    onStop();
   };
 
   return (
@@ -29,7 +42,7 @@ const MeditationControls = ({ onStart, onPause, onStop, isPlaying, duration }: M
         <Button
           variant="outline"
           size="icon"
-          onClick={onStop}
+          onClick={handleStop}
           className="w-12 h-12 rounded-full border-meditation-primary/30 hover:border-meditation-primary hover:bg-meditation-primary/10"
         >
           <Square className="w-5 h-5" />
