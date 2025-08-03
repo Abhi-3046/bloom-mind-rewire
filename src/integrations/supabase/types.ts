@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      animated_characters: {
+        Row: {
+          animation_url: string | null
+          created_at: string
+          description: string | null
+          id: string
+          is_unlocked: boolean | null
+          level_required: number | null
+          name: string | null
+          theme: string | null
+        }
+        Insert: {
+          animation_url?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_unlocked?: boolean | null
+          level_required?: number | null
+          name?: string | null
+          theme?: string | null
+        }
+        Update: {
+          animation_url?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_unlocked?: boolean | null
+          level_required?: number | null
+          name?: string | null
+          theme?: string | null
+        }
+        Relationships: []
+      }
       background_sounds: {
         Row: {
           created_at: string
@@ -37,6 +70,48 @@ export type Database = {
           title?: string | null
         }
         Relationships: []
+      }
+      brain_rewire_metrics: {
+        Row: {
+          calm_score: number | null
+          created_at: string
+          focus_score: number | null
+          id: string
+          session_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          calm_score?: number | null
+          created_at?: string
+          focus_score?: number | null
+          id?: string
+          session_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          calm_score?: number | null
+          created_at?: string
+          focus_score?: number | null
+          id?: string
+          session_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "brain_rewire_metrics_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "meditations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "brain_rewire_metrics_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       chat_conversations: {
         Row: {
@@ -97,6 +172,48 @@ export type Database = {
           },
         ]
       }
+      feedback: {
+        Row: {
+          comment: string | null
+          id: string
+          rating: number | null
+          session_id: string | null
+          submitted_at: string
+          user_id: string | null
+        }
+        Insert: {
+          comment?: string | null
+          id?: string
+          rating?: number | null
+          session_id?: string | null
+          submitted_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          comment?: string | null
+          id?: string
+          rating?: number | null
+          session_id?: string | null
+          submitted_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "feedback_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "meditations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "feedback_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       meditations: {
         Row: {
           completed_at: string | null
@@ -140,6 +257,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      user_progress: {
+        Row: {
+          created_at: string
+          current_level: number
+          id: string
+          last_meditation: string | null
+          streak_count: number
+          total_xp: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          current_level?: number
+          id?: string
+          last_meditation?: string | null
+          streak_count?: number
+          total_xp?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          current_level?: number
+          id?: string
+          last_meditation?: string | null
+          streak_count?: number
+          total_xp?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       users: {
         Row: {
