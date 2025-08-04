@@ -40,7 +40,6 @@ export function AppSidebar() {
       className={`${collapsed ? "w-14" : "w-64"} border-r border-border/10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60`}
       collapsible="icon"
     >
-      <SidebarTrigger className="m-2 self-end text-meditation-primary" />
 
       <SidebarContent className="p-2">
         <SidebarGroup>
