@@ -21,7 +21,6 @@ const navigationItems = [
   { title: "Soundscapes", url: "/soundscapes", icon: Headphones },
   { title: "Podcasts", url: "/podcasts", icon: Podcast },
   { title: "Schedule", url: "/schedule", icon: Calendar },
-  { title: "Stats", url: "/stats", icon: BarChart3 },
 ];
 
 export function AppSidebar() {
