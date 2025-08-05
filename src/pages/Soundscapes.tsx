@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Volume2 } from "lucide-react";
@@ -7,6 +7,7 @@ import { Slider } from "@/components/ui/slider";
 const Soundscapes = () => {
   const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
   const [volume, setVolume] = useState([75]);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const soundscapes = [
     {
@@ -56,7 +57,8 @@ const Soundscapes = () => {
       name: "Bamboo Flute",
       description: "Soothing bamboo flute melodies",
       duration: "50 min",
-      category: "Instrumental"
+      category: "Instrumental",
+      audioSrc: "/audio/soundscapes/Inner Calm Bamboo Flute Meditation Music Relaxing Flute Music_2.mp3"
     }
   ];
 
@@ -67,8 +69,37 @@ const Soundscapes = () => {
     ? soundscapes 
     : soundscapes.filter(s => s.category === selectedCategory);
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume[0] / 100;
+    }
+  }, [volume]);
+
   const togglePlay = (id: string) => {
-    setCurrentlyPlaying(currentlyPlaying === id ? null : id);
+    const soundscape = soundscapes.find(s => s.id === id);
+    
+    if (currentlyPlaying === id) {
+      // Pause current audio
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      setCurrentlyPlaying(null);
+    } else {
+      // Stop any currently playing audio
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      
+      // Play new audio if it has a source
+      if (soundscape?.audioSrc) {
+        audioRef.current = new Audio(soundscape.audioSrc);
+        audioRef.current.volume = volume[0] / 100;
+        audioRef.current.loop = true;
+        audioRef.current.play().catch(console.error);
+      }
+      
+      setCurrentlyPlaying(id);
+    }
   };
 
   return (
