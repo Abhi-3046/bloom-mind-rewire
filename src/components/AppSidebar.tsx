@@ -15,12 +15,12 @@ import {
 
 const navigationItems = [
   { title: "Guided Sessions", url: "/", icon: Play },
-  { title: "Profile", url: "/profile", icon: User },
   { title: "AI Guide", url: "/ai-guide", icon: Brain },
   { title: "Breathing", url: "/breathing", icon: Wind },
   { title: "Soundscapes", url: "/soundscapes", icon: Headphones },
   { title: "Podcasts", url: "/podcasts", icon: Podcast },
   { title: "Schedule", url: "/schedule", icon: Calendar },
+  { title: "Profile", url: "/profile", icon: User },
 ];
 
 export function AppSidebar() {
