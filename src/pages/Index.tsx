@@ -2,16 +2,19 @@ import { useState, useEffect } from 'react';
 import MeditationAvatar from '@/components/MeditationAvatar';
 import MeditationControls from '@/components/MeditationControls';
 import SessionSelector from '@/components/SessionSelector';
+import MoodSelector from '@/components/MoodSelector';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import heroImage from '@/assets/meditation-hero.jpg';
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<'home' | 'session' | 'meditation'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'mood-before' | 'meditation' | 'mood-after'>('home');
   const [selectedSession, setSelectedSession] = useState<string>('');
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(600); // 10 minutes default
   const [timeLeft, setTimeLeft] = useState(duration);
+  const [moodBefore, setMoodBefore] = useState<string>('');
+  const [moodAfter, setMoodAfter] = useState<string>('');
 
   // Timer logic
   useEffect(() => {
@@ -21,6 +24,7 @@ const Index = () => {
         setTimeLeft((prev) => {
           if (prev <= 1) {
             setIsPlaying(false);
+            setCurrentView('mood-after');
             return duration; // Reset
           }
           return prev - 1;
@@ -32,7 +36,7 @@ const Index = () => {
 
   const handleSessionSelect = (sessionId: string) => {
     setSelectedSession(sessionId);
-    setCurrentView('meditation');
+    setCurrentView('mood-before');
     
     // Set duration based on session
     const durations: Record<string, number> = {
@@ -47,17 +51,53 @@ const Index = () => {
     setTimeLeft(newDuration);
   };
 
+  const handleMoodBefore = (mood: string) => {
+    setMoodBefore(mood);
+    setCurrentView('meditation');
+  };
+
+  const skipMoodBefore = () => {
+    setCurrentView('meditation');
+  };
+
   const handleStart = () => setIsPlaying(true);
   const handlePause = () => setIsPlaying(false);
   const handleStop = () => {
     setIsPlaying(false);
     setTimeLeft(duration);
+    setCurrentView('mood-after');
+  };
+
+  const handleMoodAfter = (mood: string) => {
+    setMoodAfter(mood);
+    // Here you could save the meditation session data to Supabase
+    console.log('Session completed:', {
+      session: selectedSession,
+      moodBefore,
+      moodAfter: mood,
+      duration: duration / 60
+    });
+    setCurrentView('home');
+    resetSession();
+  };
+
+  const skipMoodAfter = () => {
+    setCurrentView('home');
+    resetSession();
+  };
+
+  const resetSession = () => {
+    setMoodBefore('');
+    setMoodAfter('');
+    setSelectedSession('');
+    setIsPlaying(false);
   };
 
   const handleBack = () => {
     setCurrentView('home');
     setIsPlaying(false);
     setTimeLeft(duration);
+    resetSession();
   };
 
   return (
@@ -109,6 +149,30 @@ const Index = () => {
           </div>
         )}
 
+        {currentView === 'mood-before' && (
+          <div className="flex-1 flex flex-col items-center justify-center p-6">
+            {/* Back Button */}
+            <div className="absolute top-6 left-6">
+              <Button
+                variant="ghost"
+                onClick={handleBack}
+                className="text-meditation-primary hover:bg-meditation-primary/10"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back
+              </Button>
+            </div>
+
+            <div className="max-w-md mx-auto animate-fade-in">
+              <MoodSelector
+                title="How are you feeling right now?"
+                onMoodSelect={handleMoodBefore}
+                onSkip={skipMoodBefore}
+              />
+            </div>
+          </div>
+        )}
+
         {currentView === 'meditation' && (
           <div className="flex-1 flex flex-col items-center justify-center p-6 space-y-12">
             {/* Back Button */}
@@ -149,6 +213,18 @@ const Index = () => {
               timeLeft={timeLeft}
               totalDuration={duration}
             />
+            </div>
+          </div>
+        )}
+
+        {currentView === 'mood-after' && (
+          <div className="flex-1 flex flex-col items-center justify-center p-6">
+            <div className="max-w-md mx-auto animate-fade-in">
+              <MoodSelector
+                title="How are you feeling now?"
+                onMoodSelect={handleMoodAfter}
+                onSkip={skipMoodAfter}
+              />
             </div>
           </div>
         )}
