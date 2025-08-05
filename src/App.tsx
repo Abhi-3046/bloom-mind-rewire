@@ -24,13 +24,13 @@ const App = () => (
         <AppLayout>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/stats" element={<Profile />} />
             <Route path="/ai-guide" element={<AIGuide />} />
             <Route path="/breathing" element={<Breathing />} />
             <Route path="/soundscapes" element={<Soundscapes />} />
             <Route path="/podcasts" element={<Podcasts />} />
             <Route path="/schedule" element={<Schedule />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/stats" element={<Profile />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
