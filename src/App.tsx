@@ -11,6 +11,7 @@ import Breathing from "./pages/Breathing";
 import Soundscapes from "./pages/Soundscapes";
 import Podcasts from "./pages/Podcasts";
 import Schedule from "./pages/Schedule";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/stats" element={<Profile />} />
+            <Route path="/auth" element={<Auth />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

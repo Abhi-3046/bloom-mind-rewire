@@ -4,10 +4,13 @@ import MeditationControls from '@/components/MeditationControls';
 import SessionSelector from '@/components/SessionSelector';
 import MoodSelector from '@/components/MoodSelector';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, LogIn } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 import heroImage from '@/assets/meditation-hero.jpg';
 
 const Index = () => {
+  const { isAuthenticated } = useAuth();
   const [currentView, setCurrentView] = useState<'home' | 'mood-before' | 'meditation' | 'mood-after'>('home');
   const [selectedSession, setSelectedSession] = useState<string>('');
   const [isPlaying, setIsPlaying] = useState(false);
@@ -133,18 +136,29 @@ const Index = () => {
               <SessionSelector onSessionSelect={handleSessionSelect} />
             </div>
 
-            {/* Quick Start */}
-            <div className="text-center animate-fade-in">
-              <p className="text-sm text-muted-foreground mb-4">
-                Or start with a quick 5-minute session
-              </p>
-              <Button 
-                onClick={() => handleSessionSelect('recharge')}
-                variant="outline"
-                className="border-meditation-primary/30 text-meditation-primary hover:bg-meditation-primary/10"
-              >
-                Quick Start
-              </Button>
+            {/* Quick Start or Login */}
+            <div className="text-center animate-fade-in space-y-4">
+              {isAuthenticated ? (
+                <>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Or start with a quick 5-minute session
+                  </p>
+                  <Button 
+                    onClick={() => handleSessionSelect('recharge')}
+                    variant="outline"
+                    className="border-meditation-primary/30 text-meditation-primary hover:bg-meditation-primary/10"
+                  >
+                    Quick Start
+                  </Button>
+                </>
+              ) : (
+                <Button asChild className="bg-meditation-primary hover:bg-meditation-primary/90">
+                  <Link to="/auth">
+                    <LogIn className="w-4 h-4 mr-2" />
+                    Sign In to Continue
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
         )}
