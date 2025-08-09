@@ -42,7 +42,7 @@ const Soundscapes = () => {
       id: "binaural",
       name: "40 Hz Binaural Beats",
       description: "Focus, memory and concentration frequency",
-      duration: "varies",
+      duration: "40 min",
       category: "Frequency",
       audioSrc: "/audio/soundscapes/Pure 40 HZ Binaural Beats The Frequency for FOCUS, MEMORY, and CONCENTRATION - Be Inspired STUDIO (1).mp3"
     },
@@ -159,7 +159,7 @@ const Soundscapes = () => {
                     {soundscape.category}
                   </span>
                 </div>
-                <span className="text-sm text-muted-foreground">{new Date().toLocaleTimeString()}</span>
+                <span className="text-sm text-muted-foreground">{soundscape.duration}</span>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
