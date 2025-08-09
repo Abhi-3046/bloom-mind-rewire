@@ -159,7 +159,7 @@ const Soundscapes = () => {
                     {soundscape.category}
                   </span>
                 </div>
-                <span className="text-sm text-muted-foreground">{soundscape.duration}</span>
+                <span className="text-sm text-muted-foreground">{new Date().toLocaleTimeString()}</span>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
