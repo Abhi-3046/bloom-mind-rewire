@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Bot, User } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Message {
   id: string;
@@ -53,23 +54,14 @@ const ChatInterface = () => {
     setIsLoading(true);
 
     try {
-      // Call AgentX API
-      const response = await fetch('https://app.agentx.so/api/shared-chat/6867671d8619760d29937401/message', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: messageText,
-          conversationId: Date.now().toString() // Simple conversation ID
-        }),
+      // Call local AI chat function
+      const { data, error } = await supabase.functions.invoke('ai-chat', {
+        body: { message: messageText }
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to get response from AI');
+      if (error) {
+        throw new Error(error.message || 'Failed to get response from AI');
       }
-
-      const data = await response.json();
       
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -80,7 +72,7 @@ const ChatInterface = () => {
       
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
-      console.error('Error calling AgentX API:', error);
+      console.error('Error calling AI chat function:', error);
       
       // Fallback response
       const botMessage: Message = {
