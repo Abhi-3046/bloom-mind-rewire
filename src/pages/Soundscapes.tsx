@@ -40,10 +40,11 @@ const Soundscapes = () => {
     },
     {
       id: "binaural",
-      name: "Binaural Beats",
-      description: "Alpha waves for deep relaxation",
-      duration: "40 min",
-      category: "Frequency"
+      name: "40 Hz Binaural Beats",
+      description: "Focus, memory and concentration frequency",
+      duration: "varies",
+      category: "Frequency",
+      audioSrc: "/audio/soundscapes/Pure 40 HZ Binaural Beats The Frequency for FOCUS, MEMORY, and CONCENTRATION - Be Inspired STUDIO (1).mp3"
     },
     {
       id: "tibetan",
