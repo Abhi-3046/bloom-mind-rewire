@@ -57,7 +57,7 @@ const Soundscapes = () => {
       description: "Sacred singing bowl meditation",
       duration: "35 min",
       category: "Instrumental"
-       audioSrc: "/audio/soundscapes/Tibetan Bowls Meditation Music - Tibetan Singing Bowls Healing Music for Relaxation and Stress Relief.mp3"
+       
     },
     {
       id: "flute",
