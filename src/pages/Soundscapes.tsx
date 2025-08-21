@@ -16,6 +16,7 @@ const Soundscapes = () => {
       description: "Gentle rainfall in a peaceful forest",
       duration: "30 min",
       category: "Nature"
+      audioSrc: "/audio/soundscapes/Forest Rain - 1080p.mp3"
     },
     {
       id: "ocean",
@@ -23,6 +24,7 @@ const Soundscapes = () => {
       description: "Rhythmic waves on a calm beach",
       duration: "45 min", 
       category: "Water"
+      audioSrc: "/audio/soundscapes/Ocean Waves - 1080p.mp3"
     },
     {
       id: "mountain",
@@ -30,6 +32,8 @@ const Soundscapes = () => {
       description: "Babbling brook in the mountains",
       duration: "60 min",
       category: "Water"
+      audioSrc: "/audio/soundscapes/Mountain Stream - 1080p.mp3"
+      
     },
     {
       id: "birds",
@@ -37,6 +41,7 @@ const Soundscapes = () => {
       description: "Dawn chorus in a tranquil garden",
       duration: "25 min",
       category: "Nature"
+       audioSrc: "/audio/soundscapes/Morning Birds - 1080p.mp3"
     },
     {
       id: "binaural",
@@ -52,6 +57,7 @@ const Soundscapes = () => {
       description: "Sacred singing bowl meditation",
       duration: "35 min",
       category: "Instrumental"
+       audioSrc: "/audio/soundscapes/Tibetan Bowls Meditation Music - Tibetan Singing Bowls Healing Music for Relaxation and Stress Relief.mp3"
     },
     {
       id: "flute",
