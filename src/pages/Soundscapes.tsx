@@ -85,7 +85,17 @@ const Soundscapes = () => {
         audioRef.current = new Audio(soundscape.audioSrc);
         audioRef.current.volume = volume[0] / 100;
         audioRef.current.loop = true;
-        audioRef.current.play().catch(console.error);
+        
+        // Add error handling
+        audioRef.current.onerror = (e) => {
+          console.error(`Failed to load audio: ${soundscape.audioSrc}`, e);
+          setCurrentlyPlaying(null);
+        };
+        
+        audioRef.current.play().catch((error) => {
+          console.error(`Failed to play audio: ${soundscape.audioSrc}`, error);
+          setCurrentlyPlaying(null);
+        });
       }
       
       setCurrentlyPlaying(id);
