@@ -40,7 +40,7 @@ const Soundscapes = () => {
       description: "Sacred singing bowl meditation",
       duration: "35 min",
       category: "Instrumental",
-      audioSrc: "/audio/soundscapes/Tibetan%20Bowls.mp3"
+      audioSrc: "/audio/soundscapes/TB.mp3"
     },
     {
       id: "flute",
