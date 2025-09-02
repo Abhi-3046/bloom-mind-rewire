@@ -12,33 +12,19 @@ const Soundscapes = () => {
   const soundscapes = [
     {
       id: "forest",
-      name: "Forest Rain",
-      description: "Gentle rainfall in a peaceful forest",
-      duration: "30 min",
+      name: "Rain Forest",
+      description: "Gentle rainfall in a peaceful rainforest",
+      duration: "60 min",
       category: "Nature",
       audioSrc: "/audio/soundscapes/Rain forest.mp3"
-    },
-    {
-      id: "ocean",
-      name: "Ocean Waves",
-      description: "Rhythmic waves on a calm beach",
-      duration: "45 min", 
-      category: "Water"
     },
     {
       id: "mountain",
       name: "Mountain Stream",
       description: "Babbling brook in the mountains",
-      duration: "60 min",
+      duration: "45 min",
       category: "Water",
       audioSrc: "/audio/soundscapes/Mountain Stream.mp3"
-    },
-    {
-      id: "birds",
-      name: "Morning Birds",
-      description: "Dawn chorus in a tranquil garden",
-      duration: "25 min",
-      category: "Nature"
     },
     {
       id: "binaural",
@@ -59,196 +45,14 @@ const Soundscapes = () => {
     {
       id: "flute",
       name: "Bamboo Flute",
-      description: "Soothing bamboo flute melodies",
+      description: "Inner calm bamboo flute meditation music",
       duration: "50 min",
       category: "Instrumental",
       audioSrc: "/audio/soundscapes/Inner Calm Bamboo Flute Meditation Music Relaxing Flute Music_2.mp3"
-    },
-    {
-      id: "waterfall",
-      name: "Waterfall",
-      description: "Powerful cascade in a hidden valley",
-      duration: "55 min",
-      category: "Water"
-    },
-    {
-      id: "wind",
-      name: "Gentle Wind",
-      description: "Soft breeze through tall grass",
-      duration: "40 min",
-      category: "Nature"
-    },
-    {
-      id: "thunder",
-      name: "Distant Thunder",
-      description: "Rolling thunder from far-off storms",
-      duration: "35 min",
-      category: "Nature"
-    },
-    {
-      id: "crickets",
-      name: "Night Crickets",
-      description: "Evening symphony of crickets",
-      duration: "45 min",
-      category: "Nature"
-    },
-    {
-      id: "fire",
-      name: "Crackling Fire",
-      description: "Warm fireplace on a quiet evening",
-      duration: "50 min",
-      category: "Ambient"
-    },
-    {
-      id: "piano",
-      name: "Ambient Piano",
-      description: "Soft piano melodies for reflection",
-      duration: "42 min",
-      category: "Instrumental"
-    },
-    {
-      id: "guitar",
-      name: "Acoustic Guitar",
-      description: "Gentle fingerpicked guitar",
-      duration: "38 min",
-      category: "Instrumental"
-    },
-    {
-      id: "chimes",
-      name: "Wind Chimes",
-      description: "Melodic chimes in the breeze",
-      duration: "30 min",
-      category: "Instrumental"
-    },
-    {
-      id: "white-noise",
-      name: "White Noise",
-      description: "Pure white noise for focus",
-      duration: "60 min",
-      category: "Frequency"
-    },
-    {
-      id: "pink-noise",
-      name: "Pink Noise",
-      description: "Balanced frequency spectrum",
-      duration: "60 min",
-      category: "Frequency"
-    },
-    {
-      id: "brown-noise",
-      name: "Brown Noise",
-      description: "Deep, rich background noise",
-      duration: "60 min",
-      category: "Frequency"
-    },
-    {
-      id: "528hz",
-      name: "528 Hz Love Frequency",
-      description: "The frequency of love and healing",
-      duration: "45 min",
-      category: "Frequency"
-    },
-    {
-      id: "432hz",
-      name: "432 Hz Earth Frequency",
-      description: "Natural tuning frequency",
-      duration: "45 min",
-      category: "Frequency"
-    },
-    {
-      id: "alpha-waves",
-      name: "Alpha Wave Binaural",
-      description: "8-12 Hz for relaxation and creativity",
-      duration: "40 min",
-      category: "Frequency"
-    },
-    {
-      id: "theta-waves",
-      name: "Theta Wave Binaural",
-      description: "4-8 Hz for deep meditation",
-      duration: "40 min",
-      category: "Frequency"
-    },
-    {
-      id: "delta-waves",
-      name: "Delta Wave Binaural",
-      description: "0.5-4 Hz for deep sleep",
-      duration: "60 min",
-      category: "Frequency"
-    },
-    {
-      id: "cafe",
-      name: "Coffee Shop Ambiance",
-      description: "Subtle background chatter and activity",
-      duration: "50 min",
-      category: "Ambient"
-    },
-    {
-      id: "library",
-      name: "Quiet Library",
-      description: "Subtle sounds of a peaceful library",
-      duration: "45 min",
-      category: "Ambient"
-    },
-    {
-      id: "space",
-      name: "Deep Space",
-      description: "Cosmic ambient soundscape",
-      duration: "55 min",
-      category: "Ambient"
-    },
-    {
-      id: "underwater",
-      name: "Underwater",
-      description: "Submerged in calm waters",
-      duration: "40 min",
-      category: "Water"
-    },
-    {
-      id: "jungle",
-      name: "Jungle Sounds",
-      description: "Rich tropical rainforest",
-      duration: "50 min",
-      category: "Nature"
-    },
-    {
-      id: "desert",
-      name: "Desert Night",
-      description: "Quiet desert under starlight",
-      duration: "45 min",
-      category: "Nature"
-    },
-    {
-      id: "arctic",
-      name: "Arctic Wind",
-      description: "Cold wind across icy landscape",
-      duration: "35 min",
-      category: "Nature"
-    },
-    {
-      id: "bells",
-      name: "Temple Bells",
-      description: "Sacred temple bell meditation",
-      duration: "38 min",
-      category: "Instrumental"
-    },
-    {
-      id: "harp",
-      name: "Celtic Harp",
-      description: "Ethereal harp melodies",
-      duration: "42 min",
-      category: "Instrumental"
-    },
-    {
-      id: "drone",
-      name: "Meditation Drone",
-      description: "Continuous harmonic tones",
-      duration: "60 min",
-      category: "Instrumental"
     }
   ];
 
-  const categories = ["All", "Nature", "Water", "Frequency", "Instrumental", "Ambient"];
+  const categories = ["All", "Nature", "Water", "Frequency", "Instrumental"];
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredSoundscapes = selectedCategory === "All" 
