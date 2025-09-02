@@ -15,8 +15,8 @@ const Soundscapes = () => {
       name: "Forest Rain",
       description: "Gentle rainfall in a peaceful forest",
       duration: "30 min",
-      category: "Nature"
-      
+      category: "Nature",
+      audioSrc: "/audio/soundscapes/Rain forest.mp3"
     },
     {
       id: "ocean",
@@ -24,16 +24,14 @@ const Soundscapes = () => {
       description: "Rhythmic waves on a calm beach",
       duration: "45 min", 
       category: "Water"
-     
     },
     {
       id: "mountain",
       name: "Mountain Stream",
       description: "Babbling brook in the mountains",
       duration: "60 min",
-      category: "Water"
-      
-      
+      category: "Water",
+      audioSrc: "/audio/soundscapes/Mountain Stream.mp3"
     },
     {
       id: "birds",
@@ -41,7 +39,6 @@ const Soundscapes = () => {
       description: "Dawn chorus in a tranquil garden",
       duration: "25 min",
       category: "Nature"
-      
     },
     {
       id: "binaural",
@@ -56,8 +53,8 @@ const Soundscapes = () => {
       name: "Tibetan Bowls",
       description: "Sacred singing bowl meditation",
       duration: "35 min",
-      category: "Instrumental"
-       
+      category: "Instrumental",
+      audioSrc: "/audio/soundscapes/Tibetan Bowls.mp3"
     },
     {
       id: "flute",
