@@ -68,6 +68,11 @@ const Soundscapes = () => {
   const togglePlay = (id: string) => {
     const soundscape = soundscapes.find(s => s.id === id);
     
+    if (!soundscape || !soundscape.audioSrc) {
+      console.error('Soundscape unavailable:', id);
+      return;
+    }
+    
     if (currentlyPlaying === id) {
       // Pause current audio
       if (audioRef.current) {

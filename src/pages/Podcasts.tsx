@@ -141,6 +141,15 @@ const Podcasts = () => {
                     variant="outline"
                     size="sm"
                     className="border-meditation-primary/30 text-meditation-primary hover:bg-meditation-primary/10"
+                    onClick={() => {
+                      const params = new URLSearchParams({
+                        title: podcast.title,
+                        host: podcast.host,
+                        url: podcast.url,
+                        description: podcast.description
+                      });
+                      window.location.href = `/podcast-player?${params.toString()}`;
+                    }}
                   >
                     <Play className="h-3 w-3 mr-1" />
                     Play

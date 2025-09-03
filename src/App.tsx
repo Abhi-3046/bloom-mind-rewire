@@ -10,6 +10,7 @@ import AIGuide from "./pages/AIGuide";
 import Breathing from "./pages/Breathing";
 import Soundscapes from "./pages/Soundscapes";
 import Podcasts from "./pages/Podcasts";
+import PodcastPlayerPage from "./pages/PodcastPlayerPage";
 import Schedule from "./pages/Schedule";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/breathing" element={<Breathing />} />
             <Route path="/soundscapes" element={<Soundscapes />} />
             <Route path="/podcasts" element={<Podcasts />} />
+            <Route path="/podcast-player" element={<PodcastPlayerPage />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/stats" element={<Profile />} />
