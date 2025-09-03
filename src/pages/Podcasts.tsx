@@ -6,57 +6,53 @@ const Podcasts = () => {
   const podcasts = [
     {
       id: 1,
-      title: "The Science of Meditation",
-      host: "Dr. Sarah Chen",
-      description: "Exploring the neuroscience behind mindfulness practices and their impact on brain plasticity.",
-      duration: "32 min",
-      published: "2 days ago",
-      category: "Science"
+      title: "Your Brain On… Meditation",
+      host: "Season 3, Episode 4",
+      description: "Explores how meditation reshapes attention networks, breaks phone addiction, and offers long-term cognitive advantages.",
+      duration: "Episode",
+      published: "Latest",
+      category: "Neuroscience",
+      url: "https://podcasts.apple.com/us/podcast/your-brain-on-meditation/id1730984252?i=1000666873403"
     },
     {
       id: 2,
-      title: "Sleep Stories for Deep Rest",
-      host: "Marcus Williams",
-      description: "Calming narratives designed to guide you into peaceful, restorative sleep.",
-      duration: "45 min",
-      published: "1 week ago",
-      category: "Sleep"
+      title: "How Do I Keep My Brain Healthy?",
+      host: "Dr. Sonja Blum",
+      description: "Practical habits to support brain health, including meditation and lifestyle factors for cognitive wellness.",
+      duration: "Health Matters",
+      published: "Recent",
+      category: "Health",
+      url: "https://podcasts.apple.com/nl/podcast/how-do-i-keep-my-brain-healthy/id1679632229?i=1000710254210"
     },
     {
       id: 3,
-      title: "Mindful Leadership",
-      host: "Emma Rodriguez",
-      description: "How meditation practices can transform your approach to leadership and decision-making.",
-      duration: "28 min",
-      published: "1 week ago",
-      category: "Leadership"
+      title: "Meditation Changes Your Brain. Here's How.",
+      host: "Dr. Richard Davidson",
+      description: "Research-backed insights into how meditation reshapes the brain—emotional regulation, stress resilience, and measurable improvements in mental health outcomes.",
+      duration: "Colloquy Podcast",
+      published: "Featured",
+      category: "Research",
+      url: "https://colloquy.simplecast.com/episodes/meditation-changes-your-brain-HDlJo5Q4"
     },
     {
       id: 4,
-      title: "Ancient Wisdom, Modern Life",
-      host: "Lama Tenzin",
-      description: "Traditional Buddhist teachings adapted for contemporary mindfulness practice.",
-      duration: "38 min",
-      published: "2 weeks ago",
-      category: "Philosophy"
+      title: "Brain Waves & Meditation",
+      host: "Science News Highlight",
+      description: "Study from Mount Sinai found that loving-kindness meditation can shift beta and gamma brain wave patterns in the amygdala and hippocampus—regions tied to emotional regulation and memory.",
+      duration: "Study Review",
+      published: "Latest Research",
+      category: "Science",
+      url: "https://health-matters.simplecast.com/episodes/how-do-i-keep-my-brain-healthy-Rhxu0tzg"
     },
     {
       id: 5,
-      title: "Stress and the Body",
-      host: "Dr. Michael Park",
-      description: "Understanding how chronic stress affects our physical health and healing through meditation.",
-      duration: "25 min",
-      published: "3 weeks ago",
-      category: "Health"
-    },
-    {
-      id: 6,
-      title: "Meditation for Parents",
-      host: "Lisa Thompson",
-      description: "Practical mindfulness techniques for busy parents to find peace in daily chaos.",
-      duration: "22 min",
-      published: "1 month ago",
-      category: "Family"
+      title: "How Meditation Works & Science-Based Effective Meditations",
+      host: "Dr. Andrew Huberman",
+      description: "Dr. Huberman explains biological mechanisms behind meditation—how it alters default mood, reduces anxiety, improves focus, promotes neuroplasticity, sleep, relaxation, and long-term happiness.",
+      duration: "Huberman Lab",
+      published: "Stanford Research",
+      category: "Science",
+      url: "https://youtu.be/wTBSGgbIvsY?si=9INYBEY75l-_zKLn"
     }
   ];
 
