@@ -32,19 +32,27 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
     }
   }, []);
 
+  const isExternalPlatform = url && (
+    url.includes('podcasts.apple.com') ||
+    url.includes('simplecast.com') ||
+    url.includes('youtube.com') ||
+    url.includes('youtu.be') ||
+    url.includes('spotify.com')
+  );
+
   const handlePlayPause = () => {
     if (!url) {
       setError('No podcast URL available');
       return;
     }
 
-    if (isYoutube) {
-      // For YouTube links, open in new tab
+    // For all external podcast platforms, open in new tab
+    if (isExternalPlatform) {
       window.open(url, '_blank');
       return;
     }
 
-    // For direct audio URLs
+    // For direct audio URLs only
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
@@ -103,10 +111,10 @@ const PodcastPlayer: React.FC<PodcastPlayerProps> = ({
             className="bg-meditation-primary hover:bg-meditation-primary/90"
             disabled={!!error}
           >
-            {isYoutube ? (
+            {isExternalPlatform ? (
               <>
                 <ExternalLink className="h-4 w-4 mr-2" />
-                Play on YouTube
+                Listen on Platform
               </>
             ) : (
               <>
