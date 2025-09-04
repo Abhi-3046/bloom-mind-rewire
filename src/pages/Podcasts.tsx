@@ -1,8 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Clock, Download } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Podcasts = () => {
+  const navigate = useNavigate();
   const podcasts = [
     {
       id: 1,
@@ -74,7 +76,19 @@ const Podcasts = () => {
               <CardTitle className="text-2xl mt-2">The Science of Meditation</CardTitle>
               <p className="text-muted-foreground">with Dr. Sarah Chen</p>
             </div>
-            <Button className="bg-meditation-primary hover:bg-meditation-primary/90">
+            <Button 
+              className="bg-meditation-primary hover:bg-meditation-primary/90"
+              onClick={() => {
+                const featuredPodcast = podcasts[4]; // Huberman Lab episode
+                const params = new URLSearchParams({
+                  title: featuredPodcast.title,
+                  host: featuredPodcast.host,
+                  url: featuredPodcast.url,
+                  description: featuredPodcast.description
+                });
+                navigate(`/podcast-player?${params.toString()}`);
+              }}
+            >
               <Play className="h-4 w-4 mr-2" />
               Play Now
             </Button>
@@ -148,7 +162,7 @@ const Podcasts = () => {
                         url: podcast.url,
                         description: podcast.description
                       });
-                      window.location.href = `/podcast-player?${params.toString()}`;
+                      navigate(`/podcast-player?${params.toString()}`);
                     }}
                   >
                     <Play className="h-3 w-3 mr-1" />
