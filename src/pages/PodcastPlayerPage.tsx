@@ -5,10 +5,10 @@ import PodcastPlayer from '../components/PodcastPlayer';
 const PodcastPlayerPage = () => {
   const [searchParams] = useSearchParams();
   
-  const title = searchParams.get('title') || 'Podcast';
-  const host = searchParams.get('host') || '';
-  const url = searchParams.get('url') || '';
-  const description = searchParams.get('description') || '';
+  const title = decodeURIComponent(searchParams.get('title') || 'Podcast');
+  const host = decodeURIComponent(searchParams.get('host') || '');
+  const url = decodeURIComponent(searchParams.get('url') || '');
+  const description = decodeURIComponent(searchParams.get('description') || '');
   const isYoutube = url.includes('youtube.com') || url.includes('youtu.be');
 
   return (
